@@ -1,0 +1,19 @@
+.dropdown {
+  .dropdown-menu-label {
+
+  }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+    }
+
+  &:hover {
+
+      .dropdown-menu {
+        display: block;
+        position: relative;
+      }
+    
+  }
+}
