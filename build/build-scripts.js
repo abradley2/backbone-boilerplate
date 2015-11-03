@@ -16,13 +16,13 @@ var nameRegex = /([\w]+)(?=\.main\.js$)/g;
 function bundle(done){
   glob('./src/scripts/**/*.main.js', function(err, files){
     var streams = files.map(function(entry){
-      return browserify({ entries: [entry]})
-        .on('log', gutil.log)
-        .on('error', gutil.log.bind(gutil, 'Browserify Error'))
-        .transform(babelify)
+      return browserify({ entries: [entry]})    
         .transform(jadeify)
+        .transform(babelify)
         .transform(stringify(['.html']))
         .transform({global: true}, uglify)
+        .on('log', gutil.log)
+        .on('error', gutil.log.bind(gutil, 'Browserify Error'))
         .bundle()
         .pipe(source(entry.match(nameRegex)[0]))
         .pipe(rename({extname: '.bundle.js'}))
