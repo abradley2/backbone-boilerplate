@@ -1,9 +1,12 @@
+import ViewManager from './ViewManager.js';
+import Router from './Router.js';
+
 import views from './views/index.js';
 import layouts from './layouts/index.js';
 import routes from './routes/index.js';
 
 $(document).ready(function(){
-  console.log('four');
+
   window.app = {
     /*
       The viewManager handles rendering of combinations of layouts and their

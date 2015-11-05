@@ -4,18 +4,33 @@
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{}],2:[function(require,module,exports){
-"use strict";function _interopRequireDefault(e){return e&&e.__esModule?e:{"default":e}}var _viewsIndexJs=require("./views/index.js"),_viewsIndexJs2=_interopRequireDefault(_viewsIndexJs),_layoutsIndexJs=require("./layouts/index.js"),_layoutsIndexJs2=_interopRequireDefault(_layoutsIndexJs),_routesIndexJs=require("./routes/index.js"),_routesIndexJs2=_interopRequireDefault(_routesIndexJs);$(document).ready(function(){console.log("four"),window.app={viewManager:new ViewManager({views:_viewsIndexJs2["default"],layouts:_layoutsIndexJs2["default"],el:"body"}),router:new Router(_routesIndexJs2["default"])},Backbone.history.start()});
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0});var Router=function e(t){var e=Backbone.Router.extend({routes:t});return new e};exports["default"]=Router,module.exports=exports["default"];
 
-},{"./layouts/index.js":3,"./routes/index.js":5,"./views/index.js":6}],3:[function(require,module,exports){
-"use strict";function _interopRequireDefault(e){return e&&e.__esModule?e:{"default":e}}Object.defineProperty(exports,"__esModule",{value:!0});var _mainJade=require("./main.jade"),_mainJade2=_interopRequireDefault(_mainJade);exports["default"]={},module.exports=exports["default"];
+},{}],3:[function(require,module,exports){
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0});var ViewManager=function(){function e(e){var t={};return _.each(e,function(e,n){t[n]={factory:_.isFunction(e)?e:function(){return e},isRendered:!1}}),t}var t=Backbone.View.extend({initialize:function(t){var n=t.el,r=t.views,i=t.layouts;this.setElement(n),this.views=e(r),this.layouts=e(i)},render:function(e){var t=e.layout,n=e.views,r=e.params;this.cleanupViews(n),this.renderLayout(t),this.renderView(n,r)},remove:function(){this.cleanupViews(),this.$el.empty()},cleanupViews:function(e){_.each(_.omit(this.views,e),function(e){e.isRendered=!1,e.controller&&e.controller.remove(),e.controller=null})},renderLayout:function(e){this.layouts[e].isRendered||(this.template=this.layouts[e].factory(),this.$el.html(this.template)),_.each(_.omit(this.layouts,e),function(e){e.isRendered=!1})},renderView:function(e,t){var n=this;_.each(e,function(e,t){var r=n.views[e];r.isRendered=!0,r.controller||(r.controller=new r.factory),r.controller.setElement(t),r.controller.render()})}});return t}();exports["default"]=ViewManager,module.exports=exports["default"];
 
-},{"./main.jade":4}],4:[function(require,module,exports){
-var jade=require("jade/runtime");module.exports=function(e){var r=[];return r.push("<h3>this is the main layout</h3>"),r.join("")};
+},{}],4:[function(require,module,exports){
+"use strict";function _interopRequireDefault(e){return e&&e.__esModule?e:{"default":e}}var _ViewManagerJs=require("./ViewManager.js"),_ViewManagerJs2=_interopRequireDefault(_ViewManagerJs),_RouterJs=require("./Router.js"),_RouterJs2=_interopRequireDefault(_RouterJs),_viewsIndexJs=require("./views/index.js"),_viewsIndexJs2=_interopRequireDefault(_viewsIndexJs),_layoutsIndexJs=require("./layouts/index.js"),_layoutsIndexJs2=_interopRequireDefault(_layoutsIndexJs),_routesIndexJs=require("./routes/index.js"),_routesIndexJs2=_interopRequireDefault(_routesIndexJs);$(document).ready(function(){window.app={viewManager:new _ViewManagerJs2["default"]({views:_viewsIndexJs2["default"],layouts:_layoutsIndexJs2["default"],el:"body"}),router:new _RouterJs2["default"](_routesIndexJs2["default"])},Backbone.history.start()});
 
-},{"jade/runtime":1}],5:[function(require,module,exports){
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports["default"]={},module.exports=exports["default"];
+},{"./Router.js":2,"./ViewManager.js":3,"./layouts/index.js":5,"./routes/index.js":8,"./views/index.js":11}],5:[function(require,module,exports){
+"use strict";function _interopRequireDefault(e){return e&&e.__esModule?e:{"default":e}}Object.defineProperty(exports,"__esModule",{value:!0});var _mainJade=require("./main.jade"),_mainJade2=_interopRequireDefault(_mainJade);exports["default"]={main:_mainJade2["default"]},module.exports=exports["default"];
 
-},{}],6:[function(require,module,exports){
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports["default"]={},module.exports=exports["default"];
+},{"./main.jade":6}],6:[function(require,module,exports){
+var jade=require("jade/runtime");module.exports=function(e){var r=[];return r.push('<div id="content-region"></div>'),r.join("")};
 
-},{}]},{},[2]);
+},{"jade/runtime":1}],7:[function(require,module,exports){
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports["default"]=function(){app.viewManager.render({layout:"main",views:{"#content-region":"home"},params:{}})},module.exports=exports["default"];
+
+},{}],8:[function(require,module,exports){
+"use strict";function _interopRequireDefault(e){return e&&e.__esModule?e:{"default":e}}Object.defineProperty(exports,"__esModule",{value:!0});var _homeJs=require("./home.js"),_homeJs2=_interopRequireDefault(_homeJs);exports["default"]={"":_homeJs2["default"],home:_homeJs2["default"]},module.exports=exports["default"];
+
+},{"./home.js":7}],9:[function(require,module,exports){
+"use strict";function _interopRequireDefault(e){return e&&e.__esModule?e:{"default":e}}Object.defineProperty(exports,"__esModule",{value:!0});var _homeJade=require("./home.jade"),_homeJade2=_interopRequireDefault(_homeJade);exports["default"]=Backbone.View.extend({template:_homeJade2["default"],initialize:function(){},render:function(){this.$el.html(this.template())},remove:function(){this.$el.empty()}}),module.exports=exports["default"];
+
+},{"./home.jade":10}],10:[function(require,module,exports){
+var jade=require("jade/runtime");module.exports=function(e){var r=[];return r.push("<h3>Beep Boop</h3>"),r.join("")};
+
+},{"jade/runtime":1}],11:[function(require,module,exports){
+"use strict";function _interopRequireDefault(e){return e&&e.__esModule?e:{"default":e}}Object.defineProperty(exports,"__esModule",{value:!0});var _homeHomeJs=require("./home/Home.js"),_homeHomeJs2=_interopRequireDefault(_homeHomeJs);exports["default"]={home:_homeHomeJs2["default"]},module.exports=exports["default"];
+
+},{"./home/Home.js":9}]},{},[4]);
