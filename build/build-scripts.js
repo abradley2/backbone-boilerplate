@@ -16,12 +16,12 @@ function bundle(done){
         .on('log', gutil.log)
         .on('error', gutil.log.bind(gutil, 'Browserify Error'));
 
-      //config.browserifyTransforms(bundler, 'prod');
+      config.browserifyOptions(bundler, 'prod');
 
       return bundler.bundle()
         .pipe(source(entry.match(nameRegex)[0]))
         .pipe(rename({extname: '.bundle.js'}))
-        .pipe(gulp.dest('./dist/scripts'));
+        .pipe(gulp.dest(config.distOptions.scriptsDistFolder));
     });
     return eventStream.merge(streams).on('end', done);
   });

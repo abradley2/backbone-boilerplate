@@ -8,13 +8,15 @@ module.exports = Backbone.View.extend({
 
   },
 
-  render(){
-    this.$el.html(this.template({
-      greeting: 'hello world'
-    }));
+  render: function(){
+    var html = this.template({
+      'message': 'hello world!'
+    });
+
+    this.$el.html(html);
   },
 
-  remove(){
+  remove: function(){
     this.$el.empty();
   }
 

@@ -28,18 +28,18 @@ var ViewManager = (function() {
       var layout = renderConfig.layout,
           views = renderConfig.views,
           params = renderConfig.params;
-      this.cleanupViews(views);
+      this.cleanupViews(_.omit(this.views, _.values(views)));
       this.renderLayout(layout);
-      this.renderView(views, params);
+      this.renderViews(views, params);
     },
 
     remove: function() {
-      this.cleanupViews();
+      this.cleanupViews(_.values(this.views));
       this.$el.empty();
     },
 
-    cleanupViews: function(omitViews) {
-      _.each(_.omit(this.views, omitViews), function(view){
+    cleanupViews: function(views) {
+      views.forEach(function(view){
         view.isRendered = false;
         if (view.controller) view.controller.remove();
         view.controller = null;
@@ -56,15 +56,14 @@ var ViewManager = (function() {
       });
     },
 
-    renderView: function(newView, params) {
-      var self = this;
+    renderViews: function(newView, params) {
       _.each(newView, function(viewName, el){
-        var view = self.views[viewName];
+        var view = this.views[viewName];
         view.isRendered = true;
         if (!view.controller) view.controller = new view.factory();
         view.controller.setElement(el);
         view.controller.render();
-      });
+      }, this);
     }
 
   });

@@ -6,13 +6,13 @@
 @import "../../node_modules/bourbon/app/assets/stylesheets/_bourbon.scss";
 @import "../../node_modules/font-awesome/scss/font-awesome.scss";
 
-@import "./variables.scss";
+@import "./_variables.scss";
 
 // Neat Settings -- uncomment if using Neat -- must be imported before Neat
-@import "./grid-settings.scss";
+@import "./_grid-settings.scss";
 @import "../../node_modules/bourbon-neat/app/assets/stylesheets/_neat.scss";
-@import "./buttons.scss";
-@import "./forms.scss";
-@import "./lists.scss";
-@import "./tables.scss";
-@import "./typography.scss";
+@import "./_buttons.scss";
+@import "./_forms.scss";
+@import "./_lists.scss";
+@import "./_tables.scss";
+@import "./_typography.scss";

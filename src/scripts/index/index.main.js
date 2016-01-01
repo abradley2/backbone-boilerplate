@@ -1,5 +1,5 @@
 var ViewManager = require('./ViewManager.js'),
-    Router = require('./Router.js'),
+    routes = require('./routes'),
     layouts = require('./layouts'),
     views = require('./views');
 
@@ -21,7 +21,9 @@ $(document).ready(function(){
       The router simply responds to url changes by telling the viewManager to
       render a new layout/view set accordingly.
     */
-    router: new Router(routes)
+    router: new (Backbone.Router.extend({
+      routes: routes
+    }))
   };
 
   Backbone.history.start();

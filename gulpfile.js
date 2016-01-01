@@ -3,7 +3,7 @@ var gulp = require('gulp'),
 
 gulp.task(
   'watch-styles',
-  gulp.watch.bind(gulp,['./src/styles/**/*.scss', './src/styles/**/*.sass'], tasks.watchStyles)
+  gulp.watch.bind(gulp,['./src/styles/**/*'], tasks.watchStyles)
 );
 
 gulp.task(

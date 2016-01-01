@@ -1,15 +1,15 @@
 var gulp = require('gulp'),
-    sass = require('gulp-sass'),
     sourcemaps = require('gulp-sourcemaps'),
     gutil = require('gulp-util')
-    rename = require('gulp-rename');
+    rename = require('gulp-rename'),
+    config = require('../config.js');
 
 var nameRegex = /\.(main)$/g;
 
 function watchStyles (){
-  return gulp.src('./src/styles/**/*.main.scss')
+  return gulp.src('./src/styles/**/*.main.*')
     .pipe(sourcemaps.init())
-    .pipe(sass().on('error', gutil.log))
+    .pipe(config.gulpCSSPreprocessor)
     .pipe(sourcemaps.write())
     .pipe(rename(function(path){
       path.basename = path.basename.replace(nameRegex, '.bundle');

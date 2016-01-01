@@ -15,7 +15,7 @@ function updateBundle(entry){
     .on('error', gutil.log)
     .pipe(source(entry.match(nameRegex)[0]))
     .pipe(rename({extname: '.bundle.js'}))
-    .pipe(gulp.dest('./dist/scripts'));
+    .pipe(gulp.dest(config.distOptions.scriptsDistFolder));
 }
 
 function getBundles(done){
@@ -23,7 +23,7 @@ function getBundles(done){
     var streams = files.map(function(entry){
       var bundler = watchify(browserify({ entries: [entry], debug: true}));
 
-      config.browserifyTransforms(bundler, 'dev');
+      config.browserifyOptions(bundler, 'dev');
 
       bundler.on('log', gutil.log);
       bundler.on('update', updateBundle.bind(bundler,entry));

@@ -1,3 +1,3 @@
 <div>
-  <h3><%= greeting %></h3>
+  <h3><%= message %></h3>
 </div>

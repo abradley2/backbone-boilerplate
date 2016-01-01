@@ -2,7 +2,7 @@ module.exports = function(){
   app.viewManager.render({
     layout: 'main',
     views: {
-      '#content-region': 'home'
+      '#content-region': 'Home'
     },
     params: {}
   });
