@@ -1,9 +1,7 @@
-import ViewManager from './ViewManager.js';
-import Router from './Router.js';
-
-import views from './views/index.js';
-import layouts from './layouts/index.js';
-import routes from './routes/index.js';
+var ViewManager = require('./ViewManager.js'),
+    Router = require('./Router.js'),
+    layouts = require('./layouts'),
+    views = require('./views');
 
 $(document).ready(function(){
 

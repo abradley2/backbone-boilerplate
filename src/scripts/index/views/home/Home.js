@@ -1,6 +1,6 @@
-import template from './home.jade';
+var template = require('./home.tpl');
 
-export default Backbone.View.extend({
+module.exports = Backbone.View.extend({
 
   template: template,
 
@@ -9,7 +9,9 @@ export default Backbone.View.extend({
   },
 
   render(){
-    this.$el.html(this.template());
+    this.$el.html(this.template({
+      greeting: 'hello world'
+    }));
   },
 
   remove(){

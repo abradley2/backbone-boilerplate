@@ -4,7 +4,7 @@ var ViewManager = (function() {
     var retVal = {};
     _.each(views, function(factory, name) {
       retVal[name] = {
-        factory: _.isFunction(factory) ? factory : () => {
+        factory: _.isFunction(factory) ? factory : function(){
           return factory
         },
         isRendered: false
@@ -39,7 +39,7 @@ var ViewManager = (function() {
     },
 
     cleanupViews: function(omitViews) {
-      _.each(_.omit(this.views, omitViews), view => {
+      _.each(_.omit(this.views, omitViews), function(view){
         view.isRendered = false;
         if (view.controller) view.controller.remove();
         view.controller = null;
@@ -51,14 +51,14 @@ var ViewManager = (function() {
         this.template = this.layouts[layout].factory();
         this.$el.html(this.template);
       }
-      _.each(_.omit(this.layouts, layout), item => {
-        item.isRendered = false;
+      _.each(_.omit(this.layouts, layout), function(layout){
+        layout.isRendered = false;
       });
     },
 
     renderView: function(newView, params) {
       var self = this;
-      _.each(newView, (viewName, el) => {
+      _.each(newView, function(viewName, el){
         var view = self.views[viewName];
         view.isRendered = true;
         if (!view.controller) view.controller = new view.factory();
@@ -73,4 +73,4 @@ var ViewManager = (function() {
 
 })();
 
-export default ViewManager;
+module.exports = ViewManager;

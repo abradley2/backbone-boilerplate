@@ -1,13 +1,6 @@
 ### Purpose
 
-This is a starting point to facilitate quick development of the client in web sites
-and applications. The only included client-side libraries are jQuery, Lodash, and
-Backbone, but of course all these are optional (just so often used by me that I've
-chosen to include them here).
-
-This solution does not include a back end and leaves it to you.
-http-server is included along with a script to spin it up as a
-prototyping convenience.
+This is a starting point to facilitate quick development of Backbone.js front-ends
 
 ### Prerequisites
 
@@ -28,17 +21,22 @@ changes and rerun the build accordingly.
 `npm run build-styles`   
 `npm run build` (builds both scripts and styles)
 
-`npm run start-server` (spins up an http-server from the /dist folder)
+All tasks can be run directly through Gulp in place of npm run if you have Gulp installed globally.
+
+Build tasks will minify their output. Watch tasks will add sourcemaps to the output.
 
 ### The Build Process
 
-All files in `/src/scripts` that follow the pattern `**.main.js` will be precompiled
-through [Babel](https://babeljs.io/) and added to `/dist/scripts` as `**.bundle.js`  
+All files in `/src/scripts` that follow the pattern `**.main.js` will be
+bundled via Browserify, with `main` tag replaced with `bundle` and piped to the
+directory specified in the root's `config.js` file.
 
-All `.scss` files through the entry-point of `/src/styles/main.scss` will be precompiled
-through [Sass](http://sass-lang.com/) and added to `/dist/styles` as `main.css`  
+Built in Browserify transforms:
+1. .html will be transformed via stringify
+2. .tpl will be transformed via jstify (precompiles underscore-style templates)
 
-Build tasks will minify their output. Watch tasks will add sourcemaps to the output.
+All `.scss` files  will be precompiled through [Sass](http://sass-lang.com/)  
+
 
 ### Included Libraries
 

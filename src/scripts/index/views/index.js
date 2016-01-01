@@ -1,5 +1,5 @@
-import home from './home/Home.js';
+var Home = require('./home/Home.js');
 
-export default {
-  'home': home
+module.exports = {
+  'Home': Home
 };

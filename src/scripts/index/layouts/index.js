@@ -1,5 +1,5 @@
-import main from './main.jade';
+var main = require('./main.html');
 
-export default {
+module.exports = {
   'main': main
 };

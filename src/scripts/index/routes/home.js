@@ -1,4 +1,4 @@
-export default function(){
+module.exports = function(){
   app.viewManager.render({
     layout: 'main',
     views: {

@@ -1,4 +1,4 @@
-var Router = (routes) => {
+var Router = function(routes){
 
   var Router = Backbone.Router.extend({
 
@@ -9,4 +9,4 @@ var Router = (routes) => {
   return new Router();
 };
 
-export default Router;
+module.exports = Router;

@@ -3,13 +3,10 @@ var gulp = require('gulp'),
     browserify = require('browserify'),
     rename = require('gulp-rename'),
     watchify = require('watchify'),
-    babelify = require('babelify'),
-    jadeify = require('jadeify'),
-    stringify = require('stringify'),
     glob = require('glob'),
     source = require('vinyl-source-stream'),
     eventStream = require('event-stream'),
-    assign = require('lodash.assign');
+    config = require('../config.js');
 
 var nameRegex = /([\w]+)(?=\.main\.js$)/g;
 
@@ -25,12 +22,12 @@ function getBundles(done){
   glob('./src/scripts/**/*.main.js', function(err, files){
     var streams = files.map(function(entry){
       var bundler = watchify(browserify({ entries: [entry], debug: true}));
-      bundler.on('log', gutil.log)
-        .transform(stringify(['.html']))
-        .transform(jadeify)
-        .transform(babelify)
-        .transform(stringify)
-        .on('update', updateBundle.bind(bundler,entry));
+
+      config.browserifyTransforms(bundler, 'dev');
+
+      bundler.on('log', gutil.log);
+      bundler.on('update', updateBundle.bind(bundler,entry));
+
       return updateBundle.call(bundler,entry);
     });
     return eventStream.merge(streams).on('end', done);
