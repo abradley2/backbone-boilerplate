@@ -28,40 +28,28 @@ exports.distOptions = {
  *  such as .exclude('dependency-to-exclude')
  */
 
-var jstify = require('jstify'),
-    uglify = require('uglifyify');
+var hbsfy = require("hbsfy"),
+    stringify = require('stringify');
 
 exports.browserifyOptions = function(bundler, env){
 
-  if (env === 'dev') {
+  if (env === 'watch') {
 
-    bundler.transform(jstify)
+
+    bundler.transform(hbsfy.configure({extensions: ['hbs']}));
+    bundler.transform(stringify(['.html']));
 
     return bundler;
 
   }
 
-  if (env === 'prod') {
+  if (env === 'build') {
 
-    bundler.transform(jstify)
-    bundler.transform({global: true}, uglify)
+    bundler.transform(hbsfy.configure({extensions: ['hbs']}));
+    bundler.transform(stringify(['.html']));
+
     return bundler;
 
   }
 
 };
-
-/** GULP CSS PREPROCESSOR OPTIONS **/
-
-/*
- *  Gulp is the automation tool, so you may pass in any
- *  CSS preprocessor that is compatible with gulp streams.
- *  By default, SASS is used. Gulp is quite simple and it
- *  may be easier to configure a different build/watch-styles
- *  process by directly editing the build/built-styles.js
- *  and build/watch-styles.js files.
- */
-
-var sass = require('gulp-sass');
-
-exports.gulpCSSPreprocessor = sass();

@@ -1,4 +1,5 @@
 var gulp = require('gulp'),
+    sass = require('gulp-sass'),
     sourcemaps = require('gulp-sourcemaps'),
     gutil = require('gulp-util')
     rename = require('gulp-rename'),

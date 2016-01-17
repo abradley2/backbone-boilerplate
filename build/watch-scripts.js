@@ -23,7 +23,7 @@ function getBundles(done){
     var streams = files.map(function(entry){
       var bundler = watchify(browserify({ entries: [entry], debug: true}));
 
-      config.browserifyOptions(bundler, 'dev');
+      config.browserifyOptions(bundler, 'watch');
 
       bundler.on('log', gutil.log);
       bundler.on('update', updateBundle.bind(bundler,entry));

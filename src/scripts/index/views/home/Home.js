@@ -1,4 +1,4 @@
-var template = require('./home.tpl');
+var template = require('./home.hbs');
 
 module.exports = Backbone.View.extend({
 

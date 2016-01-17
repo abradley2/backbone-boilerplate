@@ -32,20 +32,25 @@ bundled via Browserify, with `main` tag replaced with `bundle` and piped to the
 directory specified in the root's `config.js` file.
 
 Built in Browserify transforms:
-1. .html will be transformed via stringify
-2. .tpl will be transformed via jstify (precompiles underscore-style templates)
+1. `.hbs` files will be transformed via handlebars/hbsfy
+2. `.html` files will be transformed so they are require-able as text via stringify
 
 All `.scss` files  will be precompiled through [Sass](http://sass-lang.com/)  
 
+The build process can be easily configured and edited through the `config.js` file
+in the root of the project. You can also add custom tasks in the `/build` folder,
+then register them in `gulpfile.js`.
 
 ### Included Libraries
 
 JavaScript:
-1. lodash
+
+1. undersore
 2. jQuery
 3. Backbone
 
 CSS:
+
 1. Bourbon
 2. Neat
-3. Font Awesome
+3. Bitters
