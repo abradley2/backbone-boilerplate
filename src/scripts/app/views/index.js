@@ -1,5 +1,4 @@
-var HomeView = require('./home/HomeView.js');
-
 module.exports = {
-  'HomeView': HomeView
+  'HomeView': require('./home/HomeView.js'),
+  'NavbarView': require('./navbar/NavbarView.js')
 };
