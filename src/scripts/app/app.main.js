@@ -1,5 +1,4 @@
-var ViewManager = require('./ViewManager.js'),
-    data = require('./data'),
+var data = require('./data'),
     routes = require('./routes'),
     layouts = require('./layouts'),
     views = require('./views');
@@ -27,8 +26,9 @@ $(document).ready(function(){
       The viewMediator handles rendering of combinations of layouts and their
       nested views, and keeps track of which are rendered to automate disposal
       upon every call to render a new layout/view set.
+      
     */
-    viewManager: new ViewManager({
+    viewMediator: new BackboneViewMediator({
       views: views,
       layouts: layouts,
       el: 'body'

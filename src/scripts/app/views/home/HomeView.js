@@ -1,4 +1,4 @@
-var template = require('./home.hbs');
+var template = require('./homeTemplate.hbs');
 
 module.exports = Backbone.View.extend({
 
@@ -10,7 +10,7 @@ module.exports = Backbone.View.extend({
 
   render: function(){
     var html = this.template({
-      'message': 'hello world!'
+      'message': 'Welcome to the Wonderful World of Backbone.js!'
     });
 
     this.$el.html(html);

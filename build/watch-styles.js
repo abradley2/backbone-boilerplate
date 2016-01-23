@@ -1,20 +1,15 @@
 var gulp = require('gulp'),
-    sass = require('gulp-sass'),
+    stylus = require('gulp-stylus'),
     sourcemaps = require('gulp-sourcemaps'),
     gutil = require('gulp-util')
-    rename = require('gulp-rename'),
     config = require('../config.js');
 
-var nameRegex = /\.(main)$/g;
 
 function watchStyles (){
-  return gulp.src('./src/styles/**/*.main.*')
+  return gulp.src('./src/styles/**/*')
     .pipe(sourcemaps.init())
-    .pipe(config.gulpCSSPreprocessor)
+    .pipe(stylus().on('error', gutil.log))
     .pipe(sourcemaps.write())
-    .pipe(rename(function(path){
-      path.basename = path.basename.replace(nameRegex, '.bundle');
-    }))
     .pipe(gulp.dest('./dist/styles'));
 }
 

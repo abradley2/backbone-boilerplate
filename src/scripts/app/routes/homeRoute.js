@@ -1,8 +1,8 @@
 module.exports = function(){
-  app.viewManager.render({
+  app.viewMediator.render({
     layout: 'main',
     views: {
-      '#content-region': 'Home'
+      '#content-region': 'HomeView'
     },
     params: {}
   });
