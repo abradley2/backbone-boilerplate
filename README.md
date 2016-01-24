@@ -36,7 +36,7 @@ All tasks can be run directly through Gulp in place of npm run if you have Gulp 
 
 Build tasks will minify their output. Watch tasks will add sourcemaps to the output.
 
-### The Build Process
+# The Build Process
 
 All files in `/src/scripts` that follow the pattern `**.main.js` will be
 bundled via Browserify, with `main` tag replaced with `bundle` and piped to the
