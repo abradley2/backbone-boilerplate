@@ -1,9 +1,9 @@
-data    = require 'data'
-layouts = require 'layouts'
-views   = require 'views'
-rotues  = require 'routes'
+data    = require './data/index.coffee'
+layouts = require './layouts/index.coffee'
+views   = require './views/index.coffee'
+routes  = require './routes/index.coffee'
 
-document.ready ->
+$(document).ready ->
   window.app = {
     # The data namespace is a generic holder for factory functions that
     # return Backbone Models and Collections

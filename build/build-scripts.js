@@ -7,10 +7,10 @@ var gulp = require('gulp'),
     eventStream = require('event-stream'),
     config = require('../config.js');
 
-var nameRegex = /([\w]+)(?=\.main\.js$)/g;
+var nameRegex = /([\w]+)(?=\.main\.coffee$)/g;
 
 function bundle(done){
-  glob('./src/scripts/**/*.main.js', function(err, files){
+  glob('./src/scripts/**/*.main.*', function(err, files){
     var streams = files.map(function(entry){
       var bundler = browserify({ entries: [entry]})
         .on('log', gutil.log)
