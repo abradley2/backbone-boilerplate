@@ -3,7 +3,7 @@
 This is a starting point to facilitate quick development of Backbone.js front-ends.
 
 It includes only the standard Backbone.js libraries, with [Backbone View Mediator](https://www.npmjs.com/package/backbone-view-mediator) being the only necessary
-adition. I made this out of frustration of all other Backbone boilerplates determining far too much about my code structure, and including far too many conventions to learn. This boilerplat aims to be as close to vanilla Backbone as possible.
+adition. I made this out of frustration of all other Backbone boilerplates determining far too much about my code structure, and including far too many conventions to learn. This boilerplate aims to be as close to vanilla Backbone as possible.
 
 # Installation
 
