@@ -43,7 +43,7 @@ bundled via Browserify, with `main` tag replaced with `bundle` and piped to the
 directory specified in the root's `config.js` file. This easily
 allows you to create multiple bundles if you are not exactly building a pure 'spa'
 
-Built in Browserify transforms:
+Built in Browserify transforms:  
 1. `.hbs` files will be transformed via handlebars/hbsfy
 2. `.html` files will be transformed so they are require-able as text via stringify
 
