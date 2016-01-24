@@ -29,13 +29,14 @@ exports.distOptions = {
  */
 
 var hbsfy = require("hbsfy"),
-    stringify = require('stringify');
+    stringify = require('stringify')
+    coffeeify = require('coffeeify');
 
 exports.browserifyOptions = function(bundler, env){
 
   if (env === 'watch') {
 
-
+    bundler.transform(coffeeify);
     bundler.transform(hbsfy.configure({extensions: ['hbs']}));
     bundler.transform(stringify(['.html']));
 
@@ -45,6 +46,7 @@ exports.browserifyOptions = function(bundler, env){
 
   if (env === 'build') {
 
+    bundler.transform(coffeeify);
     bundler.transform(hbsfy.configure({extensions: ['hbs']}));
     bundler.transform(stringify(['.html']));
 
