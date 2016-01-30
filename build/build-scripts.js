@@ -13,8 +13,8 @@ function bundle(done){
   glob('./src/scripts/**/*.main.js', function(err, files){
     var streams = files.map(function(entry){
       var bundler = browserify({ entries: [entry]})
-        .on('log', gutil.log)
-        .on('error', gutil.log.bind(gutil, 'Browserify Error'));
+        .on('error', gutil.log.bind(gutil, 'Browserify Error'))
+        .on('log', gutil.log);
 
       config.browserifyOptions(bundler, 'build');
 

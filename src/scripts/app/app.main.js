@@ -26,7 +26,9 @@ $(document).ready(function(){
       The viewMediator handles rendering of combinations of layouts and their
       nested views, and keeps track of which are rendered to automate disposal
       upon every call to render a new layout/view set.
-      
+
+      For full documentation of the Backbone View Mediator see the README.md
+      https://github.com/abradley2/backbone-view-mediator
     */
     viewMediator: new BackboneViewMediator({
       views: views,

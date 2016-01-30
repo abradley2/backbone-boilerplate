@@ -10,9 +10,9 @@
 
 exports.distOptions = {
 
-  'scriptsDistFolder': './dist/scripts',
+  'scriptsDistFolder': './public/dist/scripts',
 
-  'stylesDistFolder': './dist/styles'
+  'stylesDistFolder': './public/dist/styles'
 
 };
 
