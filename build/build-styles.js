@@ -6,7 +6,7 @@ var gulp = require('gulp'),
 var nameRegex = /\.(main)$/g;
 
 function buildStyles (){
-  return gulp.src('./src/styles/**/*.*')
+  return gulp.src('./src/styles/main.styl')
     .pipe(stylus().on('error', gutil.log))
     .pipe(gulp.dest(config.distOptions.stylesDistFolder));
 }

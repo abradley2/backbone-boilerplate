@@ -6,11 +6,11 @@ var gulp = require('gulp'),
 
 
 function watchStyles (){
-  return gulp.src('./src/styles/**/*')
+  return gulp.src('./src/styles/main.styl')
     .pipe(sourcemaps.init())
     .pipe(stylus().on('error', gutil.log))
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest('./dist/styles'));
+    .pipe(gulp.dest(config.distOptions.stylesDistFolder));
 }
 
 module.exports = watchStyles;
