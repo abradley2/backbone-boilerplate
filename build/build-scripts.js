@@ -16,7 +16,7 @@ function bundle(done){
         .on('error', gutil.log.bind(gutil, 'Browserify Error'))
         .on('log', gutil.log);
 
-      config.browserifyOptions(bundler, 'build');
+      config.browserifyOptions(bundler, 'prod', entry);
 
       return bundler.bundle()
         .pipe(source(entry.match(nameRegex)[0]))

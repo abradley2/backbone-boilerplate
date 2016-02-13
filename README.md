@@ -6,10 +6,8 @@ It includes only the standard Backbone.js libraries, with [Backbone View Mediato
 addition.
 
 This Boilerplate assumes you know how to work with Backbone reasonably well, but does not
-assume you understand anything about the intended structure/conventions of the Boilerplate itself. For this reason is filled with helpful comments and should have all the information
-you need to get started quickly. If there is something you don't understand, I consider
-this an issue with the Boilerplate-
-[so please open one :)](https://github.com/abradley2/backbone-frontend-starter/issues)
+assume you understand anything about the intended structure/conventions of the Boilerplate itself. Short and helpful comments are included to ensure you have all the necessary direction
+to get started quickly.
 
 # Installation
 
@@ -17,9 +15,6 @@ To get started, first clone this repository (to the latest commit):
 ```
 git clone --depth 1 https://github.com/abradley2/backbone-frontend-starter
 ```
-
-If you want the CoffeeScript version, checkout the CoffeeScript branch and pull
-from that.
 
 Then install your needed dependencies with:
 ```
@@ -85,7 +80,3 @@ I could not avoid having to add, as Backbone simply has no built in solution for
 Once you build, open up `/public/index.html` in your browser
 [by whatever means](https://www.npmjs.com/package/http-server),
 and see the default Boilerplate SPA.
-
-### CoffeeScript
-
-For the CoffeeScript version, please check out the CoffeeScript branch of this repository.

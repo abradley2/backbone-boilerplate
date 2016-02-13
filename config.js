@@ -31,9 +31,9 @@ exports.distOptions = {
 var hbsfy = require("hbsfy"),
     stringify = require('stringify');
 
-exports.browserifyOptions = function(bundler, env){
+exports.browserifyOptions = function(bundler, env, entry){
 
-  if (env === 'watch') {
+  if (env === 'dev') {
 
 
     bundler.transform(hbsfy.configure({extensions: ['hbs']}));
@@ -43,7 +43,7 @@ exports.browserifyOptions = function(bundler, env){
 
   }
 
-  if (env === 'build') {
+  if (env === 'prod') {
 
     bundler.transform(hbsfy.configure({extensions: ['hbs']}));
     bundler.transform(stringify(['.html']));
