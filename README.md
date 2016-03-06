@@ -13,10 +13,10 @@ to get started quickly.
 
 To get started, first clone this repository (to the latest commit):
 ```
-git clone --depth 1 https://github.com/abradley2/backbone-frontend-starter
+git clone --depth 1 https://github.com/abradley2/backbone-boilerplate
 ```
 
-Then install your needed dependencies with:
+Navigate to the directory install your needed dependencies with:
 ```
 npm install
 ```
