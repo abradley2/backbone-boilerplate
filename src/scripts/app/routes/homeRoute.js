@@ -1,3 +1,5 @@
+var viewMediator = require('../viewMediator.js');
+
 /*
   Routes turn url changes into page changes! Their main job, therefore
   is to respond tell the viewMediator what the page should look like
@@ -14,7 +16,7 @@
 */
 
 module.exports = function( message ){
-  app.viewMediator.render({
+  viewMediator.render({
     layout: 'mainLayout',
 
     /*
@@ -25,7 +27,7 @@ module.exports = function( message ){
       '#navigation-region': 'NavbarView',
       '#content-region': 'HomeView'
     },
-    
+
     /*
       Params are very important. If you have a params object assigned
       to a views namespace, these will be passed to it as the second
