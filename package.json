@@ -13,14 +13,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/abradley2/backbone-frontend-starter"
+    "url": "https://github.com/abradley2/backbone-boilerplate"
   },
   "author": "Tony Bradley",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/abradley2/backbone-frontend-starter/issues"
+    "url": "https://github.com/abradley2/backbone-boilerplate/issues"
   },
-  "homepage": "https://github.com/abradley2/backbone-frontend-starter",
+  "homepage": "https://github.com/abradley2/backbone-boilerplate",
   "dependencies": {
     "backbone": "^1.2.3",
     "backbone-view-mediator": "^1.1.0",
@@ -29,9 +29,7 @@
   },
   "devDependencies": {
     "browserify": "^13.0.1",
-    "glob": "^5.0.0",
     "gulp": "^3.9.0",
-    "gulp-rename": "^1.2.2",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-stylus": "^2.2.0",
     "gulp-util": "^3.0.7",
