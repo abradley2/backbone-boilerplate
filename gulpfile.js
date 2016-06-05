@@ -1,38 +1,41 @@
 var gulp = require('gulp'),
-    tasks = require('./build');
+    buildStyles = require('./build/build-styles'),
+    watchStyles = require('./build/watch-styles'),
+    buildScripts = require('./build/build-scripts'),
+    watchScripts = require('./build/watch-scripts')
 
 gulp.task(
-  'build-styles',
-  tasks.buildStyles
-);
+    'build-styles',
+    buildStyles
+)
 
 gulp.task(
-  'watch-styles',
-  ['build-styles'],
-  gulp.watch.bind(gulp,['./src/styles/**/*'], tasks.watchStyles)
-);
+    'watch-styles',
+    ['build-styles'],
+    watchStyles
+)
 
 gulp.task(
-  'watch-scripts',
-  tasks.watchScripts
-);
+    'watch-scripts',
+    watchScripts
+)
 
 gulp.task(
-  'build-scripts',
-  tasks.buildScripts
-);
+    'build-scripts',
+    buildScripts
+)
 
 gulp.task(
-  'watch',
-  ['watch-styles', 'watch-scripts']
-);
+    'watch',
+    ['watch-styles', 'watch-scripts']
+)
 
 gulp.task(
-  'build',
-  ['build-styles', 'build-scripts']
-);
+    'build',
+    ['build-styles', 'build-scripts']
+)
 
 gulp.task(
-  'default',
-  ['build']
-);
+    'default',
+    ['build']
+)

@@ -1,30 +1,35 @@
 var gulp = require('gulp'),
     gutil = require('gulp-util'),
     browserify = require('browserify'),
-    rename = require('gulp-rename'),
-    glob = require('glob'),
-    source = require('vinyl-source-stream'),
-    eventStream = require('event-stream'),
-    config = require('../config.js');
+    hbsfy = require('hbsfy'),
+    stringify = require('stringify'),
+    source = require('vinyl-source-stream')
 
-var nameRegex = /([\w]+)(?=\.main\.js$)/g;
+function buildScripts () {
 
-function bundle(done){
-  glob('./src/scripts/**/*.main.js', function(err, files){
-    var streams = files.map(function(entry){
-      var bundler = browserify({ entries: [entry]})
-        .on('error', gutil.log.bind(gutil, 'Browserify Error'))
-        .on('log', gutil.log);
+    var b = browserify()
 
-      config.browserifyOptions(bundler, 'prod', entry);
+    b.add('./src/app.js')
 
-      return bundler.bundle()
-        .pipe(source(entry.match(nameRegex)[0]))
-        .pipe(rename({extname: '.bundle.js'}))
-        .pipe(gulp.dest(config.distOptions.scriptsDistFolder));
-    });
-    return eventStream.merge(streams).on('end', done);
-  });
+    b.transform(stringify, {
+        appliesTo: {
+            includeExtensions: ['md', 'html', 'txt']
+        }
+    })
+
+    b.transform(hbsfy, {
+        appliesTo: {
+            includeExtensions: ['hbs', 'handlebars']
+        }
+    })
+
+    b.on('log', gutil.log)
+
+
+    b.bundle()
+        .pipe(source('app.js'))
+        .pipe(gulp.dest('./public/js'))
+
 }
 
-module.exports = bundle;
+module.exports = buildScripts

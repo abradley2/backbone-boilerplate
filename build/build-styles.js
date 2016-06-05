@@ -1,14 +1,11 @@
 var gulp = require('gulp'),
     stylus = require('gulp-stylus'),
-    gutil = require('gulp-util'),
-    config = require('../config.js');
+    gutil = require('gulp-util')
 
-var nameRegex = /\.(main)$/g;
-
-function buildStyles (){
-  return gulp.src('./src/styles/main.styl')
-    .pipe(stylus().on('error', gutil.log))
-    .pipe(gulp.dest(config.distOptions.stylesDistFolder));
+function buildStyles () {
+    return gulp.src('./styles/main.styl')
+        .pipe(stylus().on('error', gutil.log))
+        .pipe(gulp.dest('./public/css'))
 }
 
-module.exports = buildStyles;
+module.exports = buildStyles

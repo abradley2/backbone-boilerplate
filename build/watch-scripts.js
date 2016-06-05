@@ -1,37 +1,42 @@
 var gulp = require('gulp'),
     gutil = require('gulp-util'),
     browserify = require('browserify'),
-    rename = require('gulp-rename'),
     watchify = require('watchify'),
-    glob = require('glob'),
-    source = require('vinyl-source-stream'),
-    eventStream = require('event-stream'),
-    config = require('../config.js');
+    hbsfy = require('hbsfy'),
+    stringify = require('stringify'),
+    source = require('vinyl-source-stream')
 
-var nameRegex = /([\w]+)(?=\.main\.js$)/g;
+function watchScripts () {
 
-function updateBundle(entry){
-  return this.bundle()
-    .on('error', gutil.log)
-    .pipe(source(entry.match(nameRegex)[0]))
-    .pipe(rename({extname: '.bundle.js'}))
-    .pipe(gulp.dest(config.distOptions.scriptsDistFolder));
+    var b = browserify({
+        plugin: [watchify]
+    })
+
+    b.add('./src/app.js')
+
+    b.transform(stringify, {
+        appliesTo: {
+            includeExtensions: ['md', 'html', 'txt']
+        }
+    })
+
+    b.transform(hbsfy, {
+        appliesTo: {
+            includeExtensions: ['hbs', 'handlebars']
+        }
+    })
+
+    b.on('log', gutil.log)
+    b.on('update', bundle)
+
+    function bundle () {
+        b.bundle()
+            .pipe(source('app.js'))
+            .pipe(gulp.dest('./public/js'))
+    }
+
+    bundle()
+
 }
 
-function getBundles(done){
-  glob('./src/scripts/**/*.main.js', function(err, files){
-    var streams = files.map(function(entry){
-      var bundler = watchify(browserify({ entries: [entry], debug: true}));
-
-      config.browserifyOptions(bundler, 'dev', entry);
-
-      bundler.on('log', gutil.log);
-      bundler.on('update', updateBundle.bind(bundler,entry));
-
-      return updateBundle.call(bundler,entry);
-    });
-    return eventStream.merge(streams).on('end', done);
-  });
-}
-
-module.exports = getBundles;
+module.exports = watchScripts
